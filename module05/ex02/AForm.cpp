@@ -11,45 +11,46 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Aform.hpp"
-Aform::Aform() : name("Unemd"), grade_sign(150), grade_execute(150), is_signed(false) {}
+#include "AForm.hpp"
 
-Aform::Aform(std::string name, int grade_sign, int grade_execute, bool sign) : name(name), grade_sign(grade_sign), grade_execute(grade_execute), is_signed(sign){}
+AForm::AForm() : name("Unemd"), grade_sign(150), grade_execute(150), is_signed(false) {}
 
-Aform::Aform(const Aform &obj) : name(obj.name), grade_sign(obj.grade_sign),  grade_execute(obj.grade_execute), is_signed(obj.is_signed)
+AForm::AForm(std::string name, int grade_sign, int grade_execute, bool sign) : name(name), grade_sign(grade_sign), grade_execute(grade_execute), is_signed(sign){}
+
+AForm::AForm(const AForm &obj) : name(obj.name), grade_sign(obj.grade_sign),  grade_execute(obj.grade_execute), is_signed(obj.is_signed)
 {
 	this->operator= (obj);
 }
 
-Aform& Aform::operator=(const Aform &obj)
+AForm& AForm::operator=(const AForm &obj)
 {
 	if (this != &obj)
 		this->is_signed = obj.is_signed;
 	return *this;
 }
 
-Aform::~Aform() {}
+AForm::~AForm() {}
 
-std::string Aform::getName() const
+std::string AForm::getName() const
 {
 	return this->name;
 }
 
-bool Aform::getSigned() const
+bool AForm::getSigned() const
 {
 	return this->is_signed;
 }
 
-int Aform::getGradeSign() const
+int AForm::getGradeSign() const
 {
 	return this->grade_sign;
 }
-int Aform::getGradeExecute() const
+int AForm::getGradeExecute() const
 {
 	return this->grade_execute;
 }
 
-std::string Aform::printIsSigned(bool is_signed) const
+std::string AForm::printIsSigned(bool is_signed) const
 {
 	std::string s;
 	if (is_signed == true)
@@ -59,28 +60,28 @@ std::string Aform::printIsSigned(bool is_signed) const
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &out, const Aform &Aform)
+std::ostream &operator<<(std::ostream &out, const AForm &Aform)
 {
 	out << Aform.getName()<<", Aform get grade to sign: " << Aform.getGradeSign()<<" and get grade to execute: "<<Aform.getGradeExecute()<<"." << Aform.printIsSigned(Aform.getSigned())<<std::endl;
 	return out;
 }
 
-Aform::GradeTooHighException::GradeTooHighException() {}
+AForm::GradeTooHighException::GradeTooHighException() {}
 
-const char* Aform::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
 	return "This grade is too high";
 }
 
-Aform::GradeTooLowException::GradeTooLowException() {}
+AForm::GradeTooLowException::GradeTooLowException() {}
 
-const char* Aform::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
 	return "This grade is too low";
 
 }
 
-void Aform::beSigned(Bureaucrat &bureaucrat)
+void AForm::beSigned(Bureaucrat &bureaucrat)
 {
 
 	if (bureaucrat.getGrade() > this->grade_sign)

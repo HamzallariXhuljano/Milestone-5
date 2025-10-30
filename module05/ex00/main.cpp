@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:39:02 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/10/30 16:45:55 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:33:19 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,16 @@ int main()
 {
 	Bureaucrat b("Thommy", 9);
 
-	std::cout<<"=========== Test no erros increment ========"<<std::endl;
+	std::cout<<"=========== Test erros costructor ========"<<std::endl;
+	try
+	{
+		Bureaucrat c ("SDSADASDAd", 0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout<<"=========== Test no erros increment =========="<<std::endl;
 	try
 	{
 		b.increment(8);

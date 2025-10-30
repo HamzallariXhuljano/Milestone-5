@@ -6,19 +6,19 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 14:49:16 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/10/30 16:41:19 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/10/30 18:20:42 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Aform_HPP
-#define Aform_HPP
+#ifndef AAform_HPP
+#define AAform_HPP
 
 #include <string>
 #include <iostream>
 
 class Bureaucrat;
 
-class Aform
+class AForm
 {
 	private:
 		const std::string name;
@@ -26,11 +26,11 @@ class Aform
 		const int grade_execute;
 		bool is_signed;
 	public:
-		Aform();
-		Aform(std::string, int, int, bool);
-		Aform(const Aform&);
-		Aform& operator=(const Aform&);
-		~Aform();
+		AForm();
+		AForm(std::string, int, int, bool);
+		AForm(const AForm&);
+		AForm& operator=(const AForm&);
+		virtual~AForm();
 		std::string getName() const;
 		bool getSigned() const;
 		int getGradeSign() const;
@@ -52,6 +52,6 @@ class Aform
 				const char* what() const throw() ;
 		};
 };
-std::ostream &operator<<(std::ostream &out, const Aform &fix);
+std::ostream &operator<<(std::ostream &out, const AForm &fix);
 
 #endif

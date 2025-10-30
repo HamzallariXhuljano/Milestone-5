@@ -6,17 +6,17 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:39:02 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/10/30 18:21:11 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/10/30 18:22:05 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Aform.hpp"
+#include "AForm.hpp"
 
 int main()
 {
 	Bureaucrat b("Thommy", 1);
-	Aform f("Ciao", 1, 15, false);
+	AForm f("Ciao", 1, 15, false);
 
 	std::cout<<"=========== Test no erros sign Aform ========"<<std::endl;
 	std::cout<<b;

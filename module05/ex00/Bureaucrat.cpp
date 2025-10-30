@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:38:59 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/10/29 14:31:15 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/10/30 19:31:24 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ Bureaucrat::Bureaucrat()
 Bureaucrat::Bureaucrat(std::string name, int grade)
 {
 	this->name = name;
-	this->grade = grade;
+	if (grade > 150)
+		throw GradeTooHighException();
+	else if (grade < 1)
+		throw GradeTooLowException();
+	else
+		this->grade = grade;
 }
 
 
