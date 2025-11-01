@@ -81,6 +81,16 @@ const char* AForm::GradeTooLowException::what() const throw()
 
 }
 
+const char* AForm::SignException::what() const throw()
+{
+	return "Error the form wasn't sign";
+}
+
+const char* AForm::ExecuteException::what() const throw()
+{
+	return "Error cannot execute the form";
+}
+
 void AForm::beSigned(Bureaucrat &bureaucrat)
 {
 

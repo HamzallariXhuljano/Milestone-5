@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:39:01 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/10/30 18:24:04 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/01 20:13:13 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ class Bureaucrat
 	void decrement(int);
 	void increment(int);
 	void signAform(AForm&);
+	void executeForm(AForm const & form) const;
+
 	class GradeTooHighException : public std::exception
 	{
 		public:
@@ -45,6 +47,12 @@ class Bureaucrat
 	{
 		public:
 			GradeTooLowException();
+			const char* what() const throw() ;
+	};
+
+	class ExecuteFromException : public std::exception
+	{
+		public:
 			const char* what() const throw() ;
 	};
 };

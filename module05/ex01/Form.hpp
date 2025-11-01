@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Aform_HPP
-#define Aform_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include <string>
 #include <iostream>
+#include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Aform
+class Form
 {
 	private:
 		const std::string name;
@@ -26,11 +27,11 @@ class Aform
 		const int grade_execute;
 		bool is_signed;
 	public:
-		Aform();
-		Aform(std::string, int, int, bool);
-		Aform(const Aform&);
-		Aform& operator=(const Aform&);
-		~Aform();
+		Form();
+		Form(std::string, int, int, bool);
+		Form(const Form&);
+		Form& operator=(const Form&);
+		~Form();
 		std::string getName() const;
 		bool getSigned() const;
 		int getGradeSign() const;
@@ -52,6 +53,6 @@ class Aform
 				const char* what() const throw() ;
 		};
 };
-std::ostream &operator<<(std::ostream &out, const Aform &fix);
+std::ostream &operator<<(std::ostream &out, const Form &fix);
 
 #endif

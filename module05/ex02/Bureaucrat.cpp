@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:38:59 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/10/30 18:24:19 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/01 20:18:26 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &obj)
 
 Bureaucrat::~Bureaucrat() {}
 
-std::string Bureaucrat::getName()const
+std::string Bureaucrat::getName() const
 {
 	return this->name;
 }
+
 int Bureaucrat::getGrade() const
 {
 	return this->grade;
@@ -84,15 +85,30 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "Oh no tommy is to low";
 }
 
-void Bureaucrat::signAform(AForm& Aform)
+
+void Bureaucrat::signAform(AForm& aform)
 {
 	try
 	{
-		Aform.beSigned(*this);
-		std::cout<< this->name << " signed " << Aform.getName()<<std::endl;
+		aform.beSigned(*this);
+		std::cout<< this->name << " signed " << aform.getName()<<std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr <<this->name<< " couldn’t sign " <<Aform.getName()<<" because "<<e.what() << std::endl;
+		std::cerr <<this->name<< " couldn’t sign " <<aform.getName()<<" because "<<e.what() << std::endl;
 	}
+}
+void Bureaucrat::executeForm(AForm const &aform) const
+{
+	try
+	{
+		aform.execute(*this);
+		std::cout<<this->name << " execute " << aform.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		std::cerr <<this->name<< " couldn’t sign " <<aform.getName()<<" because "<< e.what() << std::endl;
+	}
+
 }

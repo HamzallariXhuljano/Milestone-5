@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 19:04:15 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/10/30 19:08:28 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/01 19:09:53 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm(const ShrubberyCreationForm&);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm&);
 		~ShrubberyCreationForm();
-
+		void execute(Bureaucrat const & executor) const;
 };
 
 #endif
