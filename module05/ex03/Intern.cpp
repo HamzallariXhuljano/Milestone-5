@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:29:28 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/02 21:47:03 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/02 22:04:26 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ Intern& Intern::operator=(const Intern &obj)
 
 Intern::~Intern(){}
 
-AForm* makeShrubberyForm(const std::string &target)
+AForm* makeShrubberyForm(std::string target)
 {
 	return new ShrubberyCreationForm(target);
 }
 
-AForm* makeRobotomyForm(const std::string &target)
+AForm* makeRobotomyForm(std::string target)
 {
 	return new RobotomyRequestForm(target);
 }
-AForm* makePresidentialForm(const std::string &target)
+AForm* makePresidentialForm(std::string target)
 {
 	return new PresidentialPardonForm(target);
 }
@@ -46,7 +46,7 @@ AForm* Intern::makeForm(std::string nameForm, std::string targetForm)
 {
 	std::string fromsName[3] = {"Shrubbery Creation", "Robotomy Request", "Presidential Pardon"};
 
-	AForm* (*froms[3])(const std::string &t) = {
+	AForm* (*froms[3])(std::string t) = {
 			makeShrubberyForm,
 			makeRobotomyForm,
 			makePresidentialForm
@@ -63,3 +63,4 @@ AForm* Intern::makeForm(std::string nameForm, std::string targetForm)
 	std::cout << "Intern: form name '" << nameForm << "' does not exist." << std::endl;
 	return NULL;
 }
+

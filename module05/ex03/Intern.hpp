@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:29:27 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/02 21:43:03 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/02 22:03:32 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Intern
 		AForm* makeForm(std::string nameForm, std::string targetForm);
 };
 
-AForm* makeShrubberyForm(const std::string&);
-AForm* makeRobotomyForm(const std::string&);
-AForm* makePresidentialForm(const std::string&);
+AForm* makeShrubberyForm(std::string);
+AForm* makeRobotomyForm(std::string);
+AForm* makePresidentialForm(std::string);
 #endif
