@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:38:59 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/01 20:18:26 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/02 18:36:13 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void Bureaucrat::executeForm(AForm const &aform) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 		std::cerr <<this->name<< " couldn’t sign " <<aform.getName()<<" because "<< e.what() << std::endl;
 	}
 
