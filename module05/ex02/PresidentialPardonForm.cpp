@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 18:58:55 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/01 19:10:22 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:08:30 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,13 @@ PresidentialPardonForm::~PresidentialPardonForm(){}
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	try
-	{
-		if(this->getSigned() == false)
-			throw AForm::SignException();
-		else if (executor.getGrade() >= 5)
-			throw AForm::ExecuteException();
-		else
-		{
-			std::cout << this->target <<"  has been pardoned by Zaphod Beeblebrox."<<std::endl;
-		}
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
 
+	if(this->getSigned() == false)
+		throw AForm::SignException();
+	else if (executor.getGrade() >= this->getGradeExecute())
+		throw AForm::ExecuteException();
+	else
+	{
+		std::cout << this->target <<"  has been pardoned by Zaphod Beeblebrox."<<std::endl;
+	}
 }

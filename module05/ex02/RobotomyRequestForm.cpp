@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 19:12:07 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/01 20:10:47 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:08:54 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,23 @@ void ft_sleep(unsigned int milliseconds)
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	try
+	if (this->getSigned() == false)
+		throw AForm::SignException();
+	else if (executor.getGrade() >= this->getGradeExecute())
+		throw AForm::ExecuteException();
+	else
 	{
-		if (this->getSigned() == false)
-			throw AForm::SignException();
-		else if (executor.getGrade() >= this->getGradeExecute())
-			throw AForm::ExecuteException();
-		else
+		for(int i = 0; i < 5; i++)
 		{
-			for(int i = 0; i < 5; i++)
-			{
-				ft_sleep(2);
-				std::cout<<"[BEEP]\a"<<std::endl;
-			}
-				srand(time(0));//si mette questo per assicurare un numero randomico ogni volta
-			int num = rand();
-			if (num % 2 == 0)
-				std::cout << this->target << " has been robotomized successfully 50% of the time."<<std::endl;
-			else
-				std::cout << this->target << " the robotomy failed."<<std::endl;
+			ft_sleep(2);
+			std::cout<<"[BEEP]\a"<<std::endl;
 		}
+			srand(time(0));//si mette questo per assicurare un numero randomico ogni volta
+		int num = rand();
+		if (num % 2 == 0)
+			std::cout << this->target << " has been robotomized successfully 50% of the time."<<std::endl;
+		else
+			std::cout << this->target << " the robotomy failed."<<std::endl;
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
 }
 

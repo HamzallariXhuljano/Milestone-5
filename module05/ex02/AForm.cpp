@@ -78,7 +78,6 @@ AForm::GradeTooLowException::GradeTooLowException() {}
 const char* AForm::GradeTooLowException::what() const throw()
 {
 	return "This grade is too low";
-
 }
 
 const char* AForm::SignException::what() const throw()
