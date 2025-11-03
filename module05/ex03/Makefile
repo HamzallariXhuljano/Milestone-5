@@ -6,11 +6,11 @@
 #    By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/28 17:37:28 by xhamzall          #+#    #+#              #
-#    Updated: 2025/11/02 17:29:24 by xhamzall         ###   ########.fr        #
+#    Updated: 2025/11/03 16:16:53 by xhamzall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bureaucrat
+NAME = intern
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
