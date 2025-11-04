@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 19:12:07 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/02 17:08:54 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/04 15:02:41 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	{
 		for(int i = 0; i < 5; i++)
 		{
-			ft_sleep(2);
+			sleep(5);
 			std::cout<<"[BEEP]\a"<<std::endl;
 		}
 			srand(time(0));//si mette questo per assicurare un numero randomico ogni volta

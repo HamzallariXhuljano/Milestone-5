@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 18:53:20 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/01 20:05:25 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/04 15:03:40 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <cstdlib>//per srand() rand()
 #include <ctime>//per cloc e CLOCKS_PER_SEC
+#include <unistd.h>//sleep()
 #include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm
