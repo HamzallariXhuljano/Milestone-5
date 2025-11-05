@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:24:59 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/03 19:04:51 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:15:08 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,208 @@ ScalarConvert& ScalarConvert::operator=(const ScalarConvert &obj)
 
 ScalarConvert::~ScalarConvert(){}
 
-void ScalarConvert::converter(std::string )
+bool ScalarConvert::isChar(std::string str)
 {
 
+	std::stringstream ss(str);
+
+		if (str.length() == 1 && !(str[0] >= '0' && str[0] <= '9'))
+			return true;
+	return false;
 }
+
+void ScalarConvert::convertChar(std::string s)
+{
+	int i = static_cast<int>(s[0]);
+	float f = static_cast<float>(s[0]);
+	double d = static_cast<double>(s[0]);
+
+	if ((s[0] >= 32 && s[0] <= 126))
+		std::cout<<"char: "<<s[0]<<std::endl;
+	else
+		std::cout<<"char: Non displayable"<<std::endl;
+	std::cout<<"int: "<<i<<std::endl;
+	std::cout<<std::fixed<<std::setprecision(1);
+	std::cout<<"float: "<<f<<"f"<<std::endl;
+	std::cout<<"double: "<<d<<std::endl;
+}
+
+
+bool ScalarConvert::checkIsInt(std::string s)
+{
+	int num = atoi(s.c_str());
+	int flag = 0;
+
+	for (size_t i = 0; i < s.length(); i++)
+	{
+		if (!(s[i] >= '0' && s[i] <= '9'))
+			flag = 1;
+	}
+	if (num < -2147483648 || num > 2147483647)
+		return false;
+	else if (flag == 1)
+		return false;
+	else
+		return true;
+	return false;
+}
+
+void ScalarConvert::convertInt(std::string s)
+{
+	int i = atoi(s.c_str());
+	float f = static_cast<float>(i);
+	double d = static_cast<double>(i);
+	char c = static_cast<char>(i);
+
+	if ((s[0] >= 32 && s[0] <= 126) && !(s[0] >= 48 && s[0] <= 57))
+		std::cout<<"char: "<<c<<std::endl;
+	else if (i > 255)
+		std::cout<<"Char: impossible"<<std::endl;
+	else
+		std::cout<<"char: Non displayable"<<std::endl;
+	std::cout<<"int: "<<i<<std::endl;
+	std::cout<<std::fixed<<std::setprecision(1);
+	std::cout<<"float: "<<f<<"f"<<std::endl;
+	std::cout<<"double: "<<d<<std::endl;
+}
+
+bool ScalarConvert::checkIsFloat(std::string s)
+{
+	int dotFlag = 0;
+	int effeFlag = 0;
+	float num = atof(s.c_str());
+	size_t len = s.length();
+
+
+	if (num < FLT_MIN || num > FLT_MAX)
+		return false;
+	for (size_t i = 0; i < len; i++)
+	{
+		if (!((s[i] >= '0' && s[i] <= '9') || s[i] == '.' || s[i] == 'f' ||
+			  ((i == 0) && (s[i] == '-' || s[i] == '+'))))
+			return false;
+	}
+	for (size_t i = 0; i < len; i++)
+	{
+		if (i == 0 && s[i] == '.' && i + 1 < len && (s[i + 1] >= '0' && s[i + 1] <= '9'))
+			dotFlag++;
+		else if (i == 0 && (s[i] == '-' || s[i] == '+') &&
+				 i + 2 < len && s[i + 1] == '.' && (s[i + 2] >= '0' && s[i + 2] <= '9'))
+			dotFlag++;
+		else if (i > 0 && i + 1 < len && s[i] == '.' &&
+				 (s[i - 1] >= '0' && s[i - 1] <= '9') &&
+				 (s[i + 1] >= '0' && s[i + 1] <= '9'))
+			dotFlag++;
+		if (i == len - 1 && s[i] == 'f' && i > 0 &&
+			(s[i - 1] >= '0' && s[i - 1] <= '9'))
+			effeFlag++;
+	}
+	if (dotFlag == 1 && effeFlag == 1)
+		return true;
+	return false;
+}
+
+void ScalarConvert::convertFloat(std::string s)
+{
+	float f = atof(s.c_str());
+	int i = static_cast<int>(f);
+	double d = static_cast<double>(f);
+	char c = static_cast<char>(f);
+	if ((s[0] >= 32 && s[0] <= 126) && !(s[0] >= 48 && s[0] <= 57))
+		std::cout<<"char: "<<c<<std::endl;
+	else if (f > 255)
+		std::cout<<"Char: impossible"<<std::endl;
+	else
+		std::cout<<"char: Non displayable"<<std::endl;
+	std::cout<<"int: "<<i<<std::endl;
+	std::cout<<std::fixed<<std::setprecision(1);
+	std::cout<<"float: "<<f<<"f"<<std::endl;
+	std::cout<<"double: "<<d<<std::endl;
+}
+bool ScalarConvert::checkIsDouble(std::string s)
+{
+	int dotFlag = 0;
+	char *end;
+	double d = strtod(s.c_str(), &end);
+
+	size_t len = s.length();
+	if (d < DBL_MIN || d > DBL_MAX)
+		return false;
+	for (size_t i = 0; i < len; i++)
+	{
+		if (!((s[i] >= '0' && s[i] <= '9') || s[i] == '.' || ((i == 0) && (s[i] == '-' || s[i] == '+'))))
+			 return false;
+	}
+	for (size_t i = 0; i < len; i++)
+	{
+		if (s[i] == '.')
+		{
+			if (i == 0 && ((s[i + 1] >= '0' && s[i + 1] <= '9')))
+				dotFlag++;
+			else if (i == 1 && (s[i-1] == '-' || s[i - 1]) && (s[i + 1] >= '0' && s[i + 1] <= '9'))
+				dotFlag++;
+			else if ((s[i + 1] >= '0' && s[i + 1] <= '9') && (s[i - 1] >= '0' && s[i - 1] <= '9'))
+				dotFlag++;
+		}
+	}
+	if (dotFlag == 1)
+		return true;
+	return false;
+}
+
+void ScalarConvert::convertDouble(std::string s)
+{
+	double d = atof(s.c_str());
+	int i = static_cast<int>(d);
+	float f = static_cast<float>(d);
+	char c = static_cast<char>(d);
+	if ((s[0] >= 32 && s[0] <= 126) && !(s[0] >= 48 && s[0] <= 57))
+		std::cout<<"char: "<<c<<std::endl;
+	else if (d > 255)
+		std::cout<<"Char: impossible"<<std::endl;
+	else
+		std::cout<<"char: Non displayable"<<std::endl;
+	std::cout<<"int: "<<i<<std::endl;
+	std::cout<<std::fixed<<std::setprecision(1);
+	std::cout<<"float: "<<f<<"f"<<std::endl;
+	std::cout<<"double: "<<d<<std::endl;
+}
+
+void ScalarConvert::converter(std::string s)
+{
+	if (!s.compare("-inf"))
+	{
+		std::cout<<"char: impossible "<<std::endl;
+		std::cout<<"int: impossible"<<std::endl;
+		std::cout<<"float: -inf"<<"f"<<std::endl;
+		std::cout<<"double: -inf"<<std::endl;
+	}
+	else if (!s.compare("+inf"))
+	{
+		std::cout<<"char: impossible "<<std::endl;
+		std::cout<<"int: impossible"<<std::endl;
+		std::cout<<"float: +inf"<<"f"<<std::endl;
+		std::cout<<"double: +inf"<<std::endl;
+	}
+	else if (!s.compare("nan"))
+	{
+		std::cout<<"char: impossible "<<std::endl;
+		std::cout<<"int: impossible"<<std::endl;
+		std::cout<<"float: nan"<<"f"<<std::endl;
+		std::cout<<"double: nan"<<std::endl;
+
+	}
+	else if (isChar(s))
+		convertChar(s);
+	else if (checkIsInt(s))
+		convertInt(s);
+	else if (checkIsFloat(s))
+		convertFloat(s);
+	else if (checkIsDouble(s))
+		convertDouble(s);
+	else
+		std::cerr << "The input string isn't valid."<<std::endl;
+}
+
+
+
