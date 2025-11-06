@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:24:59 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/05 21:15:08 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:24:56 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ bool ScalarConvert::checkIsInt(std::string s)
 
 	for (size_t i = 0; i < s.length(); i++)
 	{
-		if (!(s[i] >= '0' && s[i] <= '9'))
-			flag = 1;
+		if (i == 0 && !((s[i] >= '0' && s[i] <= '9') || (s[i] == '-' || s[i] =='+')))
+			flag++;
+		else if (i > 0 && !(s[i] >= '0' && s[i] <= '9'))
+			flag++;
 	}
 	if (num < -2147483648 || num > 2147483647)
 		return false;
-	else if (flag == 1)
+	else if (flag != 0)
 		return false;
 	else
 		return true;
@@ -80,12 +82,16 @@ void ScalarConvert::convertInt(std::string s)
 	double d = static_cast<double>(i);
 	char c = static_cast<char>(i);
 
-	if ((s[0] >= 32 && s[0] <= 126) && !(s[0] >= 48 && s[0] <= 57))
-		std::cout<<"char: "<<c<<std::endl;
-	else if (i > 255)
-		std::cout<<"Char: impossible"<<std::endl;
+	if (i >= 0 && i <= 255)
+	{
+		if ((i >= 32 && i <= 126))
+			std::cout<<"char: "<<c<<std::endl;
+		else
+			std::cout<<"char: Non displayable"<<std::endl;
+
+	}
 	else
-		std::cout<<"char: Non displayable"<<std::endl;
+		std::cout<<"Char: impossible"<<std::endl;
 	std::cout<<"int: "<<i<<std::endl;
 	std::cout<<std::fixed<<std::setprecision(1);
 	std::cout<<"float: "<<f<<"f"<<std::endl;
@@ -100,7 +106,7 @@ bool ScalarConvert::checkIsFloat(std::string s)
 	size_t len = s.length();
 
 
-	if (num < FLT_MIN || num > FLT_MAX)
+	if (num < -FLT_MAX || num > FLT_MAX)
 		return false;
 	for (size_t i = 0; i < len; i++)
 	{
@@ -134,12 +140,20 @@ void ScalarConvert::convertFloat(std::string s)
 	int i = static_cast<int>(f);
 	double d = static_cast<double>(f);
 	char c = static_cast<char>(f);
-	if ((s[0] >= 32 && s[0] <= 126) && !(s[0] >= 48 && s[0] <= 57))
-		std::cout<<"char: "<<c<<std::endl;
-	else if (f > 255)
-		std::cout<<"Char: impossible"<<std::endl;
+
+	std::cout <<"*****"<< c <<"******"<<std::endl;
+	std::cout <<"*****"<< f <<"******"<<std::endl;
+
+	if (f >= 0 && f <= 255)
+	{
+		if ((f >= 32 && f <= 126))
+			std::cout<<"char1: "<<c<<std::endl;
+		else
+			std::cout<<"char: Non displayable"<<std::endl;
+
+	}
 	else
-		std::cout<<"char: Non displayable"<<std::endl;
+		std::cout<<"Char: impossible"<<std::endl;
 	std::cout<<"int: "<<i<<std::endl;
 	std::cout<<std::fixed<<std::setprecision(1);
 	std::cout<<"float: "<<f<<"f"<<std::endl;
@@ -152,7 +166,7 @@ bool ScalarConvert::checkIsDouble(std::string s)
 	double d = strtod(s.c_str(), &end);
 
 	size_t len = s.length();
-	if (d < DBL_MIN || d > DBL_MAX)
+	if (d < -DBL_MAX || d > DBL_MAX)
 		return false;
 	for (size_t i = 0; i < len; i++)
 	{
@@ -182,12 +196,17 @@ void ScalarConvert::convertDouble(std::string s)
 	int i = static_cast<int>(d);
 	float f = static_cast<float>(d);
 	char c = static_cast<char>(d);
-	if ((s[0] >= 32 && s[0] <= 126) && !(s[0] >= 48 && s[0] <= 57))
-		std::cout<<"char: "<<c<<std::endl;
-	else if (d > 255)
-		std::cout<<"Char: impossible"<<std::endl;
+
+	if (d >= 0 && d <= 255)
+	{
+		if ((s[0] >= 32 && s[0] <= 126) && !(s[0] >= 48 && s[0] <= 57))
+			std::cout<<"char: "<<c<<std::endl;
+		else
+			std::cout<<"char: Non displayable"<<std::endl;
+
+	}
 	else
-		std::cout<<"char: Non displayable"<<std::endl;
+		std::cout<<"Char: impossible"<<std::endl;
 	std::cout<<"int: "<<i<<std::endl;
 	std::cout<<std::fixed<<std::setprecision(1);
 	std::cout<<"float: "<<f<<"f"<<std::endl;

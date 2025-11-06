@@ -6,17 +6,11 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 17:25:27 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/05 20:37:09 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/06 15:43:19 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <sstream>
-#include <iomanip>// per stampare dopo la virgola std::fixed
 #include "ScalarConverter.hpp"
-
 
 int main(int ac, char **av)
 {
