@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 14:48:36 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/07 15:23:18 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/10 19:40:01 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-	Data data ;
+	Data data;
 	data.c = 'c';
 	data.i = 1273;
 	data.f = 127.3f;
