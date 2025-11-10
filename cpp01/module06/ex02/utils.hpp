@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 16:36:35 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/10 16:50:11 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/10 20:23:51 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include "B.hpp"
 #include "C.hpp"
 
-Base * generate(void);
+Base* generate(void);
 void identify(Base *p);
 void identify(Base &p);
 

@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 16:36:43 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/10 19:43:14 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/10 20:44:10 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void identify(Base *p)
 		std::cout <<"is B type"<<std::endl;
 	else if (c != NULL)
 		std::cout <<"is C type"<<std::endl;
+	else
+		std::cerr<<"Not type A, B, C for this object"<<std::endl;
 }
 
 void identify(Base &p)
