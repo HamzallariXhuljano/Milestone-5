@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:24:59 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/06 17:24:56 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/10 18:12:13 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,16 +141,12 @@ void ScalarConvert::convertFloat(std::string s)
 	double d = static_cast<double>(f);
 	char c = static_cast<char>(f);
 
-	std::cout <<"*****"<< c <<"******"<<std::endl;
-	std::cout <<"*****"<< f <<"******"<<std::endl;
-
 	if (f >= 0 && f <= 255)
 	{
 		if ((f >= 32 && f <= 126))
 			std::cout<<"char1: "<<c<<std::endl;
 		else
 			std::cout<<"char: Non displayable"<<std::endl;
-
 	}
 	else
 		std::cout<<"Char: impossible"<<std::endl;
@@ -203,7 +199,6 @@ void ScalarConvert::convertDouble(std::string s)
 			std::cout<<"char: "<<c<<std::endl;
 		else
 			std::cout<<"char: Non displayable"<<std::endl;
-
 	}
 	else
 		std::cout<<"Char: impossible"<<std::endl;
