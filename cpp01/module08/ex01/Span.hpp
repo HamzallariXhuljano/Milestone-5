@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 19:15:00 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/14 19:13:37 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/15 17:55:39 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Span
 		Span& operator=(const Span&);
 		~Span();
 		void addNumber(const int);
+		template <typename T> void addMultNum(T, T);
 		int shortestSpan();
 		int longestSpan();
 		// int gen();
@@ -47,4 +48,5 @@ class Span
 				const char* what() const throw();
 		};
 };
+#include "Span.tpp"
 #endif

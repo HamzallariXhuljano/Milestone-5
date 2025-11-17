@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 19:14:57 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/14 19:09:46 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/11/15 18:36:48 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Span::Span(unsigned int max_n)
 	this->max_n = max_n;
 }
 
-Span::Span(const Span &obj) :max_n(0), v(0)
+Span::Span(const Span &obj) :max_n(0), v(obj.v)
 {
 	this->operator=(obj);
 }
@@ -28,7 +28,10 @@ Span::Span(const Span &obj) :max_n(0), v(0)
 Span& Span::operator=(const Span &obj)
 {
 	if (this != &obj)
+	{
 		this->max_n = obj.max_n;
+		this->v = obj.v;
+	}
 	return *this;
 }
 
