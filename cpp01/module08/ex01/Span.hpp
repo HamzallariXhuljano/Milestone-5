@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 19:15:00 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/15 17:55:39 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/12/16 16:29:13 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ class Span
 		template <typename T> void addMultNum(T, T);
 		int shortestSpan();
 		int longestSpan();
-		// int gen();
 		class SizeException : public std::exception
 		{
 			public:

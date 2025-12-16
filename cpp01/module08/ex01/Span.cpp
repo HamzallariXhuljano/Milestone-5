@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 19:14:57 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/15 18:36:48 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:12:53 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ int Span::shortestSpan()
 {
 	int tmp;
 	int res;
+	std::vector<int> v_tmp = this->v;
+
 	res = INT_MAX;
 
 	if (v.size() <= 1)
 		throw (StoredException());
-	for (size_t i = 0; i < v.size() - 1; i++)
+	sort(v_tmp.begin(), v_tmp.end());
+	for (size_t i = 0; i < v_tmp.size() - 1; i++)
 	{
-		for (size_t j = i + 1; j < v.size(); j++)
-		{
-			tmp = abs(v[i] - v[j]);
+			tmp = abs(v_tmp[i] - v_tmp[i + 1]);
 			if (res > tmp)
 				res = tmp;
-		}
 	}
 	return res;
 }
@@ -70,20 +70,12 @@ int Span::longestSpan()
 {
 	int tmp;
 	int res;
-	res = INT_MIN;
+	std::vector<int> v_tmp;
 
 	if (v.size() <= 1)
 		throw (StoredException());
-	for (size_t i = 0; i < v.size() - 1; i++)
-	{
-		for (size_t j = i + 1; j < v.size(); j++)
-		{
-			tmp = abs(v[i] - v[j]);
-			if (res < tmp)
-				res = tmp;
-		}
-	}
-	return res;
+	sort(v_tmp.begin(), v_tmp.end());
+	return (v_tmp[v_tmp.size()- 1] - v_tmp[0]);
 }
 
 const char*Span::SizeException::what() const throw()

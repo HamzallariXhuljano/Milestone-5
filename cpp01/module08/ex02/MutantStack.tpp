@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 17:18:40 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/17 17:13:17 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/12/09 22:53:13 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,17 @@ typename std::stack<T>::container_type::iterator MutantStack<T>::begin()
 	return this->c.begin();
 }
 
-
 template<typename T>
 typename std::stack<T>::container_type::iterator MutantStack<T>::end()
 {
 	return this->c.end();
 }
 
-
 template<typename T>
 typename std::stack<T>::container_type::iterator MutantStack<T>::begin() const
 {
 	return this->c.begin();
 }
-
 
 template<typename T>
 typename std::stack<T>::container_type::iterator MutantStack<T>::end() const

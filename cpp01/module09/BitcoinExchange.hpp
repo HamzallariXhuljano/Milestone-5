@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/12 15:58:07 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/12/16 15:55:26 by xhamzall         ###   ########.fr       */
+/*   Created: 2025/12/04 20:56:02 by xhamzall          #+#    #+#             */
+/*   Updated: 2025/12/09 14:20:17 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
+#ifndef BITCOINEXCHANGE_HPP
+#define BITCOINEXCHANGE_HPP
 
-int main()
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <fstream>
+
+class BitocoinExchange
 {
-	std::vector<int> v;
+	public:
 
-	v.push_back(1);
-	v.push_back(2);
-	v.push_back(3);
-	try
-	{
-		easyfind(v, 2);
-		easyfind(v, 6);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-}
+		BitocoinExchange();
+		BitocoinExchange(const BitocoinExchange&);
+		BitocoinExchange& operator=(const BitocoinExchange&);
+		~BitocoinExchange();
+		bool check_file(std::string);
+};
+
+#endif
