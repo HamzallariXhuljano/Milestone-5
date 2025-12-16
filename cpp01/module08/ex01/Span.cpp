@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 19:14:57 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/12/16 17:12:53 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:31:55 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,12 @@ int Span::shortestSpan()
 
 int Span::longestSpan()
 {
-	int tmp;
-	int res;
-	std::vector<int> v_tmp;
+	std::vector<int> v_tmp = this->v;
 
 	if (v.size() <= 1)
 		throw (StoredException());
 	sort(v_tmp.begin(), v_tmp.end());
-	return (v_tmp[v_tmp.size()- 1] - v_tmp[0]);
+	return (v_tmp[v_tmp.size() - 1] - v_tmp[0]);
 }
 
 const char*Span::SizeException::what() const throw()

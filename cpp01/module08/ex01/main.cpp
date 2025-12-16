@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 19:14:55 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/15 18:19:44 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:53:25 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int main()
 		sp.addNumber(1);
 
 		sp.addMultNum(v.begin(), v.end());
-
 		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest span:  " << sp.longestSpan() << std::endl;
 	}
@@ -103,11 +102,11 @@ int main()
 
 		for (int i = 0; i < 100000; i++)
 			v.push_back(rand());
-
 		sp.addMultNum(v.begin(), v.end());
-
 		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest span:  " << sp.longestSpan() << std::endl;
+		// for (int i = 0; i < 100000; i++)
+		// 	std::cout << "######" << v[i] << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -116,3 +115,4 @@ int main()
 
 	return 0;
 }
+
