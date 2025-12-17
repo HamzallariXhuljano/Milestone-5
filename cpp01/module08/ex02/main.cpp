@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 17:11:25 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/12/09 23:12:21 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/12/17 18:10:17 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int main()
 {
-	MutantStack<int>
-	mstack;
+	std::cout << "--- SUBJECT TEST (MutantStack vs List) ---" << std::endl;
+
+	std::cout << "[MutantStack Output]:" << std::endl;
+	MutantStack<int> mstack;
 	mstack.push(5);
 	mstack.push(17);
-
-	std::cout <<"last element: "<< mstack.top() << std::endl;
+	std::cout << "Top: " << mstack.top() << std::endl;
 	mstack.pop();
-	std::cout <<"Size: "<< mstack.size() << std::endl;
-
+	std::cout << "Size: " << mstack.size() << std::endl;
 	mstack.push(3);
 	mstack.push(5);
 	mstack.push(737);
@@ -30,6 +30,7 @@ int main()
 
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
+
 	++it;
 	--it;
 	while (it != ite)
@@ -39,26 +40,42 @@ int main()
 	}
 	std::stack<int> s(mstack);
 
-	std::cout<<"============================= list ============================="<<std::endl;
-	std::list<int> container;
 
-	container.push_back(5);
-	container.push_back(17);
-	std::cout << "Last element: " << container.back() << std::endl;
-	container.pop_back();
-	std::cout << "Size: " << container.size() << std::endl;
-	container.push_back(3);
-	container.push_back(5);
-	container.push_back(737);
-	container.push_back(0);
+	std::cout << "\n[std::list Output]:" << std::endl;
+	std::list<int> list;
+	list.push_back(5);
+	list.push_back(17);
+	std::cout << "Top: " << list.back() << std::endl;
+	list.pop_back();
+	std::cout << "Size: " << list.size() << std::endl;
+	list.push_back(3);
+	list.push_back(5);
+	list.push_back(737);
+	list.push_back(0);
 
-	std::list<int>::iterator it1 = container.begin();
-	std::list<int>::iterator ite1 = container.end();
-
-	while (it1 != ite1)
+	std::list<int>::iterator lit = list.begin();
+	std::list<int>::iterator lite = list.end();
+	while (lit != lite)
 	{
-		std::cout << *it1 << std::endl;
-		++it1;
+		std::cout << *lit << std::endl;
+		++lit;
 	}
+
+	// =========================================================================
+	// 2. TEST REVERSE ITERATOR (Deve stampare al contrario)
+	// =========================================================================
+	std::cout << "\n--- REVERSE ITERATOR TEST ---" << std::endl;
+
+	MutantStack<int>::r_iterator rit = mstack.rbegin();
+	MutantStack<int>::r_iterator rite = mstack.rend();
+
+	std::cout << "Elements in reverse order:" << std::endl;
+	while (rit != rite)
+	{
+		std::cout << *rit << " ";
+		++rit;
+	}
+	std::cout << std::endl;
+
 	return 0;
 }
