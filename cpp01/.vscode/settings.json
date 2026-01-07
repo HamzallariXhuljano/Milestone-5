@@ -66,6 +66,27 @@
 		"cfenv": "cpp",
 		"cinttypes": "cpp",
 		"typeindex": "cpp",
-		"variant": "cpp"
+		"variant": "cpp",
+		"semaphore": "cpp",
+		"forward_list": "cpp",
+		"unordered_set": "cpp",
+		"regex": "cpp",
+		"stacktrace": "cpp",
+		"csetjmp": "cpp",
+		"csignal": "cpp",
+		"cuchar": "cpp",
+		"future": "cpp",
+		"valarray": "cpp",
+		"any": "cpp",
+		"barrier": "cpp",
+		"charconv": "cpp",
+		"coroutine": "cpp",
+		"expected": "cpp",
+		"latch": "cpp",
+		"scoped_allocator": "cpp",
+		"shared_mutex": "cpp",
+		"source_location": "cpp",
+		"spanstream": "cpp",
+		"syncstream": "cpp"
 	}
 }
