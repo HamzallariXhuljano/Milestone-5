@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 14:58:45 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/08 15:13:25 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/08 20:06:09 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int check_in(std::string line)
 			cnt_s++;
 			continue;
 		}
-		else if (isdigit(line[i]))
+		else if (isdigit(line[i]) && (!isdigit(line[i - 1])) && (!isdigit(line[i + 1])))
 		{
 			cnt_n++;
 			continue;
@@ -52,6 +52,9 @@ int main (int ac, char **av)
 	if (check_in(line) != 0)
 		std::cerr<<"Error!"<<std::endl;
 	else
-		std::cout<<"Success GG!"<<std::endl;
+	{
+		RPN rpn;
+		std::cout <<rpn.total_res(line)<<std::endl;
+	}
 	return 0;
 }
