@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:55:52 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/12/23 17:26:21 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/08 17:25:53 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ BitcoinExchange::BitcoinExchange()
 			this->valid = false;
 			return;
 		}
+		size_t cnt_l = 2;
 		while (std::getline(file, line))
 		{
 			if(BitcoinExchange::check_comma(line) != 0)
 			{
 
-				std::cerr<<"Erro: no comma in line."<<std::endl;
+				std::cerr<<"Error: wrong format in the csv line "<< cnt_l <<"."<<std::endl;
 				continue;
 			}
 			std::string date = take_date(line, ',');;
@@ -51,6 +52,7 @@ BitcoinExchange::BitcoinExchange()
 				float price_value = atof(price.c_str());
 				btc.insert(std::pair<time_t, float>(date_value, price_value));
 			}
+			cnt_l ++;
 		}
 	}
 }
@@ -107,7 +109,7 @@ int BitcoinExchange::check_piepe(const std::string &line)
 
 	if ( p_pos == line.npos || line[0] == '|' || line[len - 1] == '|')
 		return 1;
-	if (line[p_pos - 1] != ' ' && line[p_pos + 1] != ' ')
+	if (!isspace(line[p_pos - 1]) && !isspace(line[p_pos + 1]))
 		return 1;
 	for (size_t i = 0; i < len; i++)
 	{
@@ -118,7 +120,7 @@ int BitcoinExchange::check_piepe(const std::string &line)
 		return 1;
 	for (size_t i = 0; i < p_pos; i++)
 	{
-		if (line[i] != ' ')
+		if (isspace(line[i]))
 		{
 			flag++;
 			break;
@@ -129,7 +131,7 @@ int BitcoinExchange::check_piepe(const std::string &line)
 	flag = 0;
 	for (size_t i = len - 1; i > p_pos; i--)
 	{
-		if (line[i] != ' ')
+		if (isspace(line[i]))
 		{
 			flag++;
 			break;
@@ -150,6 +152,8 @@ int BitcoinExchange::check_comma(const std::string &line)
 		return 1;
 	for (size_t i = 0; i < len; i++)
 	{
+		if (isspace(line[i]))
+			return 1;
 		if (line[i] == ',')
 			cnt++;
 	}
@@ -181,13 +185,13 @@ std::string BitcoinExchange::str_trim(std::string &line)
 	size_t i = 0;
 	size_t j;
 
-	while ( i < line.size() && line[i] == ' ' )
+	while ( i < line.size() && (isspace(line[i])))
 		i++;
 	line.erase(0, i);
 	if (line.empty())
 		return line;
 	j = line.size() - 1;
-	while (line[j] == ' ')
+	while ((isspace(line[j])))
 		j--;
 	line.erase(j + 1);
 	return line;

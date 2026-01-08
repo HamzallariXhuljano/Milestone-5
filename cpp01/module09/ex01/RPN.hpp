@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 12:46:35 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/07 14:50:40 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/08 16:50:42 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,19 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include <map>
+#include <stack>
 #include <fstream>
 #include <time.h>
 
-class BitcoinExchange
+class RPN
 {
 	private:
-		std::map <time_t, float> btc;
-		bool valid;
+		std::stack<int> stack;
 	public:
-		
+		RPN();
+		RPN(const RPN&);
+		RPN& operator=(const RPN&);
+		~RPN();
 };
 
 #endif
