@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 14:58:45 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/08 20:06:09 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:53:42 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,15 @@ int check_in(std::string line)
 
 	for (size_t i = 0; i < len; i++)
 	{
-		if (line[i] == ' ')
+		if (isspace(line[i]))
 			continue;
-		else if (line[i] == '+' || line[i] == '/' || line[i] == '-' || line[i] == '*')
-		{
+		if (line[i] == '+' || line[i] == '/' || line[i] == '-' || line[i] == '*')
 			cnt_s++;
-			continue;
-		}
-		else if (isdigit(line[i]) && (!isdigit(line[i - 1])) && (!isdigit(line[i + 1])))
+		else if (isdigit(line[i]))
 		{
+			if (i + 1 < len && isdigit(line[i + 1]))
+				return 1;
 			cnt_n++;
-			continue;
 		}
 		else
 			return 1;
@@ -50,11 +48,11 @@ int main (int ac, char **av)
 	}
 	std::string line = av[1];
 	if (check_in(line) != 0)
-		std::cerr<<"Error!"<<std::endl;
+		std::cerr<<"Error"<<std::endl;
 	else
 	{
 		RPN rpn;
-		std::cout <<rpn.total_res(line)<<std::endl;
+		rpn.total_res(line);
 	}
 	return 0;
 }

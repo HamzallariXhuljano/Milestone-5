@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:55:52 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/08 17:25:53 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/09 13:01:23 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -358,6 +358,7 @@ void BitcoinExchange::print_err(int n_case, std::string line)
 			break;
 	}
 }
+
 void BitcoinExchange::print_val_exc(time_t &date_value, std::string &date, std::string &value, float value_n)
 {
 	//lower_bound restituisce un puntatore al primo valore piu alto di quello cercato
@@ -368,5 +369,4 @@ void BitcoinExchange::print_val_exc(time_t &date_value, std::string &date, std::
 		--it;
 		std::cout<<date<<" => "<<value <<" = " << it->second * value_n<<std::endl;
 	}
-
 }
