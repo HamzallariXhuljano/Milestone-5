@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 15:21:53 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/11 16:11:05 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/14 20:18:09 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include <string>
 
 template <typename T> void printElements(const T &t)
+{
+	std::cout<<t<<std::endl;
+}
+template <typename T> void printElement(T &t)
 {
 	std::cout<<t<<std::endl;
 }

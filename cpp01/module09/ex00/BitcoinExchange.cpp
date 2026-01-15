@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:55:52 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/09 13:01:23 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/09 17:15:22 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -370,3 +370,4 @@ void BitcoinExchange::print_val_exc(time_t &date_value, std::string &date, std::
 		std::cout<<date<<" => "<<value <<" = " << it->second * value_n<<std::endl;
 	}
 }
+

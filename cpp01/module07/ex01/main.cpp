@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 15:21:35 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/11 16:17:46 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/14 20:19:24 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ int main ()
 	iter(arr, size, printElements);
 	std::cout<<"***** test string const array *****"<<std::endl;
 	iter(arr1, size, printElements);
+	std::cout<<"***** test string const array *****"<<std::endl;
+
+	iter(arr1, size, printElement);
 
 }
