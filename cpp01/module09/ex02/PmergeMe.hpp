@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 16:32:44 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/15 18:33:34 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/16 18:08:47 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ class PmergeMe
 		void fillContainers(int &);
 		std::vector< int> getVect();
 		std::list<std::string> getList();
-		void sortVector(std::vector<int> vect);
-		void margeSortList();
+		std::vector<int> sortVector(std::vector<int> vect);
+		int jacobsthal(int);
+		// void margeSortList();
 		~PmergeMe();
 };
 

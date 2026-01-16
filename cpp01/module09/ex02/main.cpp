@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 16:33:29 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/15 18:35:50 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/16 20:52:42 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,19 @@ int main(int ac, char **av)
 		}
 		_marge.fillContainers(num);
 	}
-		_marge.sortVector(_marge.getVect());
-	// for (unsigned long i = 0; i < _marge.getVect().size() ; i++)
-	// {
-
-	// 	std::cout <<"Vett: "<<_marge.getVect()[i]<<std::endl;
-	// }
+		std::vector<int> _sorted = _marge.sortVector(_marge.getVect());
+	std::cout <<"Old Vett: ";
+	for (unsigned long i = 0; i < _marge.getVect().size(); i++)
+	{
+		std::cout<<" " <<_marge.getVect()[i];
+	}
+	std::cout <<std::endl;
+	std::cout <<std::endl;
+	std::cout <<"Sort Vett: ";
+	for (unsigned long i = 0; i < _sorted.size() ; i++)
+	{
+		std::cout<<" " <<_sorted[i];
+	}
+	std::cout <<std::endl;
 	return 0;
 }

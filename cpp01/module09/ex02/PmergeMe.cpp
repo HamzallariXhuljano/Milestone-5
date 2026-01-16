@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 16:33:33 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/15 18:39:03 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/16 21:04:57 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,19 @@ void PmergeMe::fillContainers(int &num)
 // 	return this->_list;
 // }
 
-void PmergeMe::sortVector(std::vector<int> _vect)
+std::vector<int> PmergeMe::sortVector(std::vector<int> _vect)
 {
 	std::vector < std::pair<int, int> > _pairs;
 	size_t len = _vect.size();
 	std::vector<int> _winners;
-	std::vector<int> _losers;
+	std::vector<int> _pendants;
 	int _alone;
 	bool _odd = false;
 
+	if (_vect.size() <= 1)
+	{
+		return _vect;
+	}
 	if (len % 2 != 0)
 	{
 		_alone = _vect.back();
@@ -95,28 +99,83 @@ void PmergeMe::sortVector(std::vector<int> _vect)
 		{
 			_pairs.push_back(std::make_pair(_vect[i], _vect[i + 1]));
 			_winners.push_back(_vect[i+1]);
-			_losers.push_back(_vect[i]);
 		}
 		else
 		{
 			_pairs.push_back(std::make_pair(_vect[i + 1], _vect[i]));
 			_winners.push_back(_vect[i]);
-			_losers.push_back(_vect[i + 1]);
 		}
 	}
-	if (_vect.size() > 1)
-	{
-		for (unsigned long i = 0; i < _winners.size() ; i++)
+	for (unsigned long i = 0; i < _winners.size() ; i++)
 		{
-
-			std::cout <<"Vett: "<<_winners[i]<<" " ;
+			std::cout <<"Alone: "<<_alone<<" " <<std::endl;
+			std::cout<<"Pairs: "<< _pairs[i].first << " " << _pairs[i].second <<std::endl;
+			std::cout <<"winner: "<<_winners[i]<<" " <<std::endl;
 		}
-		std::cout<<std::endl;
-		sortVector(_winners);
-		/* code */
-	}
+	std::cout<<std::endl;
+	std::vector<int> _mainChain = sortVector(_winners);
+	for (size_t i = 0; i < _mainChain.size(); i++)
+	{
+		int _big = _mainChain[i];
+		for (size_t j = 0; j < _pairs.size(); j++)
+		{
+			if (_pairs[j].second == _big)
+			{
+				_pendants.push_back(_pairs[j].first);
+				break;
+			}
 
-	return;
+		}
+	}
+	_mainChain.insert(_mainChain.begin(), _pendants[0]);
+	unsigned long _insert_num = 1;//_pendats[0] gia inserito;
+	int _steps = 0;
+	int _winFriend;
+	while (_insert_num < _pendants.size())
+	{
+		unsigned long j_num = jacobsthal(_steps);
+		if (j_num > _pendants.size() )
+			j_num =_pendants.size();
+		for (int i = j_num; i > 0; i--)
+		{
+			int _min = _pendants[i];
+			for (unsigned long  j = 0; j < j_num; j++)
+			{
+				if (_min == _pairs[j].first)
+				{
+					_winFriend = _pairs[j].second;
+					std::vector<int>::iterator it = std::find(_mainChain.begin(), _mainChain.end(), _winFriend);
+					std::vector<int>::iterator pos = std::lower_bound(_mainChain.begin(), it, _min);
+					_mainChain.insert(pos, _min);
+					_insert_num++;
+				}
+			}
+		}
+		_steps++;
+	}
+	if (_odd == true)
+	{
+		std::vector<int>::iterator it = std::lower_bound(_mainChain.begin(), _mainChain.end(), _alone);
+		_mainChain.insert(it, _alone);
+	}
+	return _mainChain;
 }
 
 std::vector< int> PmergeMe::getVect(){return this->_vector;}
+
+int PmergeMe::jacobsthal(int index)
+{
+
+		int _j_prev = 0;
+	int _j_curr = 1;
+	int _j_next = 1;
+	if (index == 1 || index == 0)
+		return index;
+	for (int i = 2; i <= index; i++)
+	{
+		_j_next = _j_curr + 2 * _j_prev;
+		_j_prev = _j_curr;
+		_j_curr = _j_next;
+	}
+	return _j_next;
+}
