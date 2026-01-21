@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 16:33:33 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/19 18:24:58 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/21 18:02:17 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ PmergeMe::PmergeMe(const PmergeMe &obj)
 {
 	this->operator= (obj);
 }
+
 PmergeMe& PmergeMe::operator=(const PmergeMe &obj)
 {
 	if (this != &obj)
 	{
 		this->_vector = obj._vector;
-		// this->_list = obj._list;
+		this->_deque = obj._deque;
 	}
 	return *this;
 }
@@ -57,112 +58,83 @@ int PmergeMe::pars(std::string &s)
 	return num;
 }
 
-void PmergeMe::fillContainers(int &num)
+void PmergeMe::fillVect(int &num)
 {
 	this->_vector.push_back(num);
-	// this->_list.push_back(s);
 }
 
-// std::vector<int> PmergeMe::getVect()
-// {
-// 	return this->_vector;
-// }
+void PmergeMe::fillDeque(int &num)
+{
+	this->_deque.push_back(num);
+}
 
-// std::list<std::string> PmergeMe::getList()
-// {
-// 	return this->_list;
-// }
+std::vector<int> PmergeMe::getVect()
+{
+	return this->_vector;
+}
 
-// std::vector<int> PmergeMe::sortVector(std::vector<int> _vect)
-// {
-// 	std::vector < std::pair<int, int> > _pairs;
-// 	size_t len = _vect.size();
-// 	std::vector<int> _winners;
-// 	std::vector<int> _pendants;
-// 	int _alone;
-// 	bool _odd = false;
+std::deque<int> PmergeMe::getDeque()
+{
+	return this->_deque;
+}
 
-// 	if (_vect.size() <= 1)
-// 	{
-// 		return _vect;
-// 	}
-// 	if (len % 2 != 0)
-// 	{
-// 		_alone = _vect.back();
-// 		_vect.pop_back();
-// 		_odd = true;
-// 	}
-// 	len = _vect.size();
-// 	for (size_t i = 0; i < len; i += 2)
-// 	{
-// 		if (_vect[i] <= _vect[i + 1])
-// 		{
-// 			_pairs.push_back(std::make_pair(_vect[i], _vect[i + 1]));
-// 			_winners.push_back(_vect[i+1]);
-// 		}
-// 		else
-// 		{
-// 			_pairs.push_back(std::make_pair(_vect[i + 1], _vect[i]));
-// 			_winners.push_back(_vect[i]);
-// 		}
-// 	}
-// 	// for (unsigned long i = 0; i < _winners.size() ; i++)
-// 	// 	{
-// 	// 		std::cout <<"Alone: "<<_alone<<" " <<std::endl;
-// 	// 		std::cout<<"Pairs: "<< _pairs[i].first << " " << _pairs[i].second <<std::endl;
-// 	// 		std::cout <<"winner: "<<_winners[i]<<" " <<std::endl;
-// 	// 	}
-// 	std::vector<int> _mainChain = sortVector(_winners);
-// 	for (size_t i = 0; i < _mainChain.size(); i++)
-// 	{
-// 		for (size_t j = 0; j < _pairs.size(); j++)
-// 		{
-// 			int _big = _mainChain[i];
-// 			if (_pairs[j].second == _big)
-// 			{
-// 				_pendants.push_back(_pairs[j].first);
-// 				break;
-// 			}
-// 		}
-// 	}
-// 	_mainChain.insert(_mainChain.begin(), _pendants[0]);
-// 	unsigned long _insert_num = 1;//_pendats[0] gia inserito;
-// 	int _steps = 0;
-// 	int _winFriend = -1;
-// 	size_t prev_limit = 0;
-// 	while (_insert_num < _pendants.size())
-// 	{
-// 		unsigned long j_num = jacobsthal(_steps);
+std::vector<int> PmergeMe::sortVector(std::vector<int> _vect)
+{
+	std::vector < std::pair<int, int> > _pairs;
+	size_t len = _vect.size();
+	std::vector<int> _winners;
+	std::vector<int> _pendants;
+	int _alone;
+	bool _odd = false;
 
-// 		if (j_num >= _pendants.size())
-// 			j_num = _pendants.size() - 1;
-// 		for (size_t i = j_num; i > prev_limit; i--)
-// 		{
-// 			int _min = _pendants[i];
-// 			for (unsigned long j = 0; j < _pairs.size(); j++)
-// 			{
-// 				if (_min == _pairs[j].first)
-// 				{
-// 					_winFriend = _pairs[j].second;
-// 					std::vector<int>::iterator it = std::find(_mainChain.begin(), _mainChain.end(), _winFriend);
-// 					std::vector<int>::iterator pos = std::lower_bound(_mainChain.begin(), it, _min);
-// 					_mainChain.insert(pos, _min);
-// 					_insert_num++;
-// 				}
-// 			}
-// 		}
-// 		prev_limit = j_num;
-// 		_steps++;
-// 	}
-// 		if (_odd == true)
-// 		{
-// 			std::vector<int>::iterator it = std::lower_bound(_mainChain.begin(), _mainChain.end(), _alone);
-// 			_mainChain.insert(it, _alone);
-// 		}
-// 		return _mainChain;
-// }
+	if (_vect.size() <= 1)
+		return _vect;
+	if (len % 2 != 0)
+	{
+		_alone = _vect.back();
+		_vect.pop_back();
+		_odd = true;
+	}
+	divideContainer(_vect, _winners, _pairs);
+	std::vector<int> _mainChain = sortVector(_winners);
+	fillPendants(_mainChain,_pendants, _pairs);
+	insertLosers(_mainChain, _pendants, _pairs);
+	if (_odd == true)
+	{
+		std::vector<int>::iterator it = std::lower_bound(_mainChain.begin(), _mainChain.end(), _alone);
+		_mainChain.insert(it, _alone);
+	}
+		return _mainChain;
+}
 
-std::vector<int> PmergeMe::getVect(){return this->_vector;}
+std::deque<int> PmergeMe::sortDeque(std::deque<int> _deque)
+{
+	std::deque < std::pair<int, int> > _pairs;
+	size_t len = _deque.size();
+	std::deque<int> _winners;
+	std::deque<int> _pendants;
+	int _alone;
+	bool _odd = false;
+
+	if (_deque.size() <= 1)
+		return _deque;
+	if (len % 2 != 0)
+	{
+		_alone = _deque.back();
+		_deque.pop_back();
+		_odd = true;
+	}
+	divideContainer(_deque, _winners, _pairs);
+	std::deque<int> _mainChain = sortDeque(_winners);
+	fillPendants(_mainChain,_pendants, _pairs);
+	insertLosers(_mainChain, _pendants, _pairs);
+	if (_odd == true)
+	{
+	std::deque<int>::iterator it = std::lower_bound(_mainChain.begin(), _mainChain.end(), _alone);
+		_mainChain.insert(it, _alone);
+	}
+		return _mainChain;
+}
 
 int PmergeMe::jacobsthal(int index)
 {
@@ -178,4 +150,14 @@ int PmergeMe::jacobsthal(int index)
 		_j_curr = _j_next;
 	}
 	return _j_next;
+}
+
+void PmergeMe::printInput(char **av, int ac)
+{
+	std::cout<<"Before:";
+	for (int i = 1; i < ac; i++)
+	{
+		std::cout<<" "<<av[i];
+	}
+	std::cout<<std::endl;
 }
