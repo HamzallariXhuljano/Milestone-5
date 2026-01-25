@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:24:59 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/10 18:12:13 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/23 18:57:10 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ bool ScalarConvert::checkIsInt(std::string s)
 
 void ScalarConvert::convertInt(std::string s)
 {
-	int i = atoi(s.c_str());
+	long i = atol(s.c_str());
 	float f = static_cast<float>(i);
 	double d = static_cast<double>(i);
 	char c = static_cast<char>(i);
@@ -92,10 +92,20 @@ void ScalarConvert::convertInt(std::string s)
 	}
 	else
 		std::cout<<"Char: impossible"<<std::endl;
-	std::cout<<"int: "<<i<<std::endl;
-	std::cout<<std::fixed<<std::setprecision(1);
-	std::cout<<"float: "<<f<<"f"<<std::endl;
-	std::cout<<"double: "<<d<<std::endl;
+	if (i < -2147483648 || i > 2147483647)
+	{
+		std::cout<<"int: impossible"<<std::endl;
+		std::cout<<std::fixed<<std::setprecision(1);
+		std::cout<<"float: "<<f<<"f"<<std::endl;
+		std::cout<<"double: "<<d<<std::endl;
+	}
+	else
+	{
+		std::cout<<"int: "<<i<<std::endl;
+		std::cout<<std::fixed<<std::setprecision(1);
+		std::cout<<"float: "<<f<<"f"<<std::endl;
+		std::cout<<"double: "<<d<<std::endl;
+	}
 }
 
 bool ScalarConvert::checkIsFloat(std::string s)
@@ -136,10 +146,10 @@ bool ScalarConvert::checkIsFloat(std::string s)
 
 void ScalarConvert::convertFloat(std::string s)
 {
-	float f = atof(s.c_str());
-	int i = static_cast<int>(f);
-	double d = static_cast<double>(f);
-	char c = static_cast<char>(f);
+	double d = strtod(s.c_str(), NULL);
+	int i = static_cast<int>(d);
+	float f = static_cast<float>(d);
+	char c = static_cast<char>(d);
 
 	if (f >= 0 && f <= 255)
 	{
@@ -150,10 +160,21 @@ void ScalarConvert::convertFloat(std::string s)
 	}
 	else
 		std::cout<<"Char: impossible"<<std::endl;
-	std::cout<<"int: "<<i<<std::endl;
-	std::cout<<std::fixed<<std::setprecision(1);
-	std::cout<<"float: "<<f<<"f"<<std::endl;
-	std::cout<<"double: "<<d<<std::endl;
+	if (d < -2147483648.0f || d > 2147483647.0f)
+	{
+		std::cout<<"int: impossible"<<std::endl;
+		std::cout<<std::fixed<<std::setprecision(1);
+		std::cout<<"float: "<<f<<"f"<<std::endl;
+		std::cout<<"double: "<<d<<std::endl;
+	}
+	else
+	{
+
+		std::cout<<"int: "<<i<<std::endl;
+		std::cout<<std::fixed<<std::setprecision(1);
+		std::cout<<"float: "<<f<<"f"<<std::endl;
+		std::cout<<"double: "<<d<<std::endl;
+	}
 }
 bool ScalarConvert::checkIsDouble(std::string s)
 {
@@ -188,7 +209,7 @@ bool ScalarConvert::checkIsDouble(std::string s)
 
 void ScalarConvert::convertDouble(std::string s)
 {
-	double d = atof(s.c_str());
+	double d = strtod(s.c_str(), NULL);
 	int i = static_cast<int>(d);
 	float f = static_cast<float>(d);
 	char c = static_cast<char>(d);
@@ -202,10 +223,21 @@ void ScalarConvert::convertDouble(std::string s)
 	}
 	else
 		std::cout<<"Char: impossible"<<std::endl;
-	std::cout<<"int: "<<i<<std::endl;
-	std::cout<<std::fixed<<std::setprecision(1);
-	std::cout<<"float: "<<f<<"f"<<std::endl;
-	std::cout<<"double: "<<d<<std::endl;
+	if (d < -2147483648.0f || d > 2147483647.0f)
+	{
+		std::cout<<"int: impossible"<<std::endl;
+		std::cout<<std::fixed<<std::setprecision(1);
+		std::cout<<"float: "<<f<<"f"<<std::endl;
+		std::cout<<"double: "<<d<<std::endl;
+	}
+	else
+	{
+
+		std::cout<<"int: "<<i<<std::endl;
+		std::cout<<std::fixed<<std::setprecision(1);
+		std::cout<<"float: "<<f<<"f"<<std::endl;
+		std::cout<<"double: "<<d<<std::endl;
+	}
 }
 
 void ScalarConvert::converter(std::string s)
@@ -237,9 +269,16 @@ void ScalarConvert::converter(std::string s)
 	else if (checkIsInt(s))
 		convertInt(s);
 	else if (checkIsFloat(s))
+	{
+		std::cout<<"is float"<<std::endl;
+
 		convertFloat(s);
+	}
 	else if (checkIsDouble(s))
+	{
+		std::cout<<"is double"<<std::endl;
 		convertDouble(s);
+	}
 	else
 		std::cerr << "The input string isn't valid."<<std::endl;
 }

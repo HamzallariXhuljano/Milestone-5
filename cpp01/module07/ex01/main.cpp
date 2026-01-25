@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 15:21:35 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/14 20:19:24 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/25 17:22:59 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ int main ()
 	arr[2] = 3;
 
 	const std::string arr1[] = {"ciao", "come", "stai"};
-
+	std::string arr2[] = {"Hello", "Wolrd", "!!!"};
 	std::cout<<"***** test int no const array *****"<<std::endl;
 	iter(arr, size, printElements);
 	std::cout<<"***** test string const array *****"<<std::endl;
 	iter(arr1, size, printElements);
 	std::cout<<"***** test string const array *****"<<std::endl;
-
-	iter(arr1, size, printElement);
-
+	iter(arr2, size, printElement);
 }

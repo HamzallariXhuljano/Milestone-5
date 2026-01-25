@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 17:25:27 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/06 15:43:19 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/23 17:44:54 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int ac, char **av)
 	}
 	if (ac != 2)
 	{
-		std::cerr << "Error input file"<<std::endl;
+		std::cerr << "Error input"<<std::endl;
 		return (1);
 	}
 	ScalarConvert::converter(av[1]);

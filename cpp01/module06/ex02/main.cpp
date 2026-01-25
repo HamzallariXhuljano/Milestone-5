@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 16:54:36 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/10 20:44:20 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/23 17:29:08 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ int main()
 	identify(b);
 	identify(none);
 	delete test;
+	delete base;
 }
