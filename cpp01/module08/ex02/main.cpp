@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 17:11:25 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/12/17 18:10:17 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:23:21 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int main()
 		++it;
 	}
 	std::stack<int> s(mstack);
-
 
 	std::cout << "\n[std::list Output]:" << std::endl;
 	std::list<int> list;

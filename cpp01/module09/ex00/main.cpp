@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 15:18:33 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/07 15:58:16 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/27 12:00:33 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int main(int ac, char **av)
 		std::cerr << "Error: wrong numbers of argument."<<std::endl;
 		return 1;
 	}
-
 	if (btc.getValid() == false)
 		return 2;
 	if (btc.check_file(av[1]) == false)
@@ -65,7 +64,6 @@ int main(int ac, char **av)
 			{
 				time_t date_val = btc.stringToDate(date);
 				float value_n = atof(value.c_str());
-
 				btc.print_val_exc(date_val, date, value, value_n);
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:55:52 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/09 17:15:22 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/27 11:58:47 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ bool BitcoinExchange::check_file(std::string nfile)
 		std::cerr<<"Error: file name or format."<<std::endl;
 		return false;
 	}
-	//(len-4) perche pos e il punto da cui parte la ricerca(cerca .txt come ultimi 4 caratteri)
 	else if (nfile.find(".txt", len - 4) == nfile.npos)
 	{
 		std::cerr<<"Error: wrong format of the file."<<std::endl;
@@ -278,12 +277,10 @@ int BitcoinExchange::validate_date(std::string &date)
 	int day = atoi((date.substr(8, 2)).c_str());
 	int flag = 0;
 
-	if (month == 2 && (year == 2012 || year == 2016 || year == 2020))
+	if (month == 2 && (year % 4 == 0))
 		flag = 1;
 	if (year < 2009 || (year == 2009 && month == 1 && day < 2))
 		return 4;
-	else if (year > 2022 || (year == 2022 && (month > 3)) || (year == 2022 && month == 3 && day > 29))
-		return 5;
 	else if (!(month >= 1 && month <= 12))
 		return 6;
 	else if (!(day >= 1 && day <= 31))
@@ -364,7 +361,12 @@ void BitcoinExchange::print_val_exc(time_t &date_value, std::string &date, std::
 	//lower_bound restituisce un puntatore al primo valore piu alto di quello cercato
 	std::map<time_t, float>::iterator it = btc.lower_bound(date_value);
 
-	if (it != btc.end())
+	if (it == btc.end())
+	{
+		--it;
+		std::cout<<date<<" => "<<value <<" = " << it->second * value_n<<std::endl;
+	}
+	else
 	{
 		--it;
 		std::cout<<date<<" => "<<value <<" = " << it->second * value_n<<std::endl;

@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:43:43 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/12/15 19:30:20 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/26 15:57:30 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typename T::const_iterator easyfind(const T &conteiner, int i)
 	it = find(conteiner.begin(), conteiner.end(), i);
 	if (it != conteiner.end())
 	{
-		std::cout<<"occurence found: "<< *it <<std::endl;//defferenza l iteratore e da cosi il valore
+		std::cout<<"occurence found: "<< *it <<std::endl;
 		return it;
 	}
 	throw NotFindException();
