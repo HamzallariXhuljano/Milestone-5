@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 15:21:53 by xhamzall          #+#    #+#             */
-/*   Updated: 2026/01/25 17:23:46 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/27 17:37:56 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,15 @@ template <typename T> void printElement(T &t)
 	std::cout<<t<<std::endl;
 }
 
-template <typename T> void iter(T *arr, const size_t size, void (*f)(const T &t))
+template <typename T> void iter(T *arr, const size_t size, void (*f)(T &t))
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		f(arr[i]);
+	}
+}
+
+template <typename T> void iter(const T *arr, const size_t size, void (*f)(const T &t))
 {
 	for (size_t i = 0; i < size; i++)
 	{
