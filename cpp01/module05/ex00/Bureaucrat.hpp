@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:39:01 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/10/29 14:29:34 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:11:49 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Bureaucrat
 {
 	private:
-		std::string name;
+		std::string const name;
 		int	grade;
 	public:
 	Bureaucrat();
@@ -48,12 +48,3 @@ class Bureaucrat
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &fix);
 
 #endif
-
-// try
-// {
-// 	b.incremnt();
-// }
-// catch (std::exception &e)
-// {
-// 	std::cout<<e<<enld
-// }

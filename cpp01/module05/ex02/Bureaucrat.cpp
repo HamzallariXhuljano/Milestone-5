@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:38:59 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/01 20:18:26 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:42:08 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ Bureaucrat::GradeTooHighException::GradeTooHighException(){}
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grazie tommy is to high";
+	return "Oh no it is too high";
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException() {}
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Oh no tommy is to low";
+	return "Oh no it is too low";
 }
 
 
@@ -110,5 +110,4 @@ void Bureaucrat::executeForm(AForm const &aform) const
 		std::cerr << e.what() << '\n';
 		std::cerr <<this->name<< " couldn’t sign " <<aform.getName()<<" because "<< e.what() << std::endl;
 	}
-
 }

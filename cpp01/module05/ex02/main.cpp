@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:39:02 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/11/03 16:16:20 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:41:04 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int main()
 	b.signAform(*f2);
 	b.executeForm(*f2);
 	std::cout<<*f2;
-
 
 	try
 	{

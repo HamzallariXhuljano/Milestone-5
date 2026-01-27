@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:39:02 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/10/30 19:33:19 by xhamzall         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:16:58 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main()
 	try
 	{
 		Bureaucrat c ("SDSADASDAd", 0);
+		std::cout<< c <<std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -34,7 +35,7 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout<<b;
+	std::cout<<b<<std::endl;
 	std::cout<<"=========== Test erros increment =========="<<std::endl;
 	try
 	{
@@ -44,7 +45,7 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout<<b;
+	std::cout<<b<<std::endl;
 	std::cout<<"=========== Test no erros dincrement ======="<<std::endl;
 	try
 	{
@@ -54,7 +55,7 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout<<b;
+	std::cout<<b<<std::endl;
 	std::cout<<"=========== Test erros dincrement ======="<<std::endl;
 	try
 	{
@@ -64,6 +65,17 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout<<b;
+	std::cout<<b<<std::endl;
+	std::cout<<"=========== Test d Bureacrat ======="<<std::endl;
+	Bureaucrat d = b;
+	try
+	{
+		d.decrement(5);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << d<<std::endl;
 	return 0;
 }
