@@ -8,6 +8,8 @@ services:
     networks:
       - inception
     container_name: mariadb
+    image: mariadb
     restart: always
 networks:
   inception:
+    driver: bridge

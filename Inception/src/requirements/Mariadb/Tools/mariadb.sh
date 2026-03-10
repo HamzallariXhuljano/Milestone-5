@@ -1,12 +1,14 @@
 #!/bin/bash
-if [ -d "var/lib/mysql/$MYSQL_DATABASE" ]
+if [ -d "/var/lib/mysql/$MYSQL_DATABASE" ]
 then
 	echo "The databese is already present"
 else
 	echo "The database is missing: creating..."
 
-	mysqld_safe &
+	mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
+	mysqld_safe &
+	
 	sleep 5
 
 	mysql -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
@@ -17,4 +19,4 @@ else
 	mysqladmin -u root -p${MYSQL_ROOTPASSWORD} shutdown
 fi
 
-exec mysqld_safe
+exec mysqld_safe --datadir=/var/lib/mysql
