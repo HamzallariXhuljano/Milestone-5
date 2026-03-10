@@ -1,0 +1,13 @@
+services:
+  mariadb:
+    build: ./requirements/Mariadb
+    volumes:
+      - /home/xhamzall/data/mariadb:/var/lib/mysql
+    env_file:
+      - .env
+    networks:
+      - inception
+    container_name: mariadb
+    restart: always
+networks:
+  inception:
