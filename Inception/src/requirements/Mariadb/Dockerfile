@@ -7,4 +7,3 @@ RUN chmod +x /bin/mariadb.sh
 EXPOSE 3306
 
 CMD ["mariadb.sh"]
-
