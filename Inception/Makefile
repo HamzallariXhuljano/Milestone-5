@@ -6,7 +6,7 @@
 #    By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/26 20:35:23 by xhamzall          #+#    #+#              #
-#    Updated: 2026/03/26 21:15:41 by xhamzall         ###   ########.fr        #
+#    Updated: 2026/04/09 15:31:31 by xhamzall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,10 @@ all: setup build up
 
 setup:
 	@echo "Preparing of the folders in DATA_PATH..."
-	@mkdir -p $(DATA_PATH)/mariadb
-	@mkdir -p $(DATA_PATH)/wordpress
-	@chmod 777 $(DATA_PATH)/mariadb
-	@chmod 777 $(DATA_PATH)/wordpress
+	@sudo mkdir -p $(DATA_PATH)/mariadb
+	@sudo mkdir -p $(DATA_PATH)/wordpress
+	@sudo chmod 777 $(DATA_PATH)/mariadb
+	@sudo chmod 777 $(DATA_PATH)/wordpress
 
 build:
 	@echo "Building the images..."
