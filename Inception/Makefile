@@ -6,7 +6,7 @@
 #    By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/26 20:35:23 by xhamzall          #+#    #+#              #
-#    Updated: 2026/04/09 15:31:31 by xhamzall         ###   ########.fr        #
+#    Updated: 2026/04/09 17:00:20 by xhamzall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,9 @@ clean: down
 	@sudo docker system prune -af
 
 fclean: clean
-	@echo "Total cleanup: included the volumes and databese..."
-	@sudo docker volume rm $(sudo docker volume ls -q) || true
+	@if [ $$(sudo docker volume ls -q | wc -l) -gt 0 ]; then \
+		sudo docker volume rm $$(sudo docker volume ls -q); \
+	fi
 	@sudo rm -rf $(DATA_PATH)
 
 re: fclean all
