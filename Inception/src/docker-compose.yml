@@ -12,24 +12,26 @@ services:
     restart: always
   web:
     build: ./requirements/nginx
-    networks:
-      - inception
+    container_name: nginx
+    volumes:
+      - /home/xhamzall/data/wordpress:/var/www/html
     ports:
       - 443:443
-    container_name: nginx
+    networks:
+      - inception
     image: nginx
     restart: always
   wordpress:
     build: ./requirements/wordpress
     container_name: wordpress
+    volumes:
+      - /home/xhamzall/data/wordpress:/var/www/html
     env_file:
       - .env
-    networks:
-      - inception
-    volumes:
-      - wordpress_data:/var/www/html
     depends_on:
       - mariadb
+    networks:
+      - inception
     restart: always
 networks:
   inception:
