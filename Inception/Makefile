@@ -6,7 +6,7 @@
 #    By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/26 20:35:23 by xhamzall          #+#    #+#              #
-#    Updated: 2026/04/10 02:18:50 by xhamzall         ###   ########.fr        #
+#    Updated: 2026/04/10 14:45:59 by xhamzall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,7 @@ stop:
 
 start:
 	@$(DOCKER_COMPOSE) start
-db_shell:
-	@sudo docker exec -it mariadb mariadb -u $(MYSQL_USER) -p
+
 #Clean up
 clean: down
 	@echo "Cleanup of the containers and networks..."
