@@ -1,5 +1,5 @@
 #!/bin/bash
-until mariadb-admin ping -h"mariadb" --silent; do
+until mariadb-admin ping -h"mariadb" -P 3306 --silent; do
 	echo "waiting for mariadb is ready"
 	sleep 3
 done;
@@ -13,7 +13,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 	wp config create --allow-root \
 		--dbname=$MYSQL_DATABASE \
 		--dbuser=$MYSQL_USER \
-		--dbpass=$MYSQL_PASSWORD\
+		--dbpass=$MYSQL_PASSWORD \
 		--dbhost=mariadb:3306
 
 	#Install the site (configuration of the admin)

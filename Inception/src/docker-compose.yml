@@ -16,7 +16,9 @@ services:
     volumes:
       - wordpress_data:/var/www/html
     ports:
-      - 443:443
+      - "443:443"
+    depends_on:
+      - wordpress
     networks:
       - inception
     image: nginx
@@ -32,6 +34,7 @@ services:
       - mariadb
     networks:
       - inception
+    image: wordpress
     restart: always
 networks:
   inception:

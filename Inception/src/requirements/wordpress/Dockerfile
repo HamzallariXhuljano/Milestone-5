@@ -13,16 +13,17 @@ RUN apt-get update && apt-get install -y \
 	curl \
 	&& rm -rf /var/lib/apt/lists/*
 
-# 3. Configurazione Universale della Frequenza (Porta 9000)
+
 # Modifichiamo il file di configurazione per ascoltare sulla rete e non sul socket locale.
 RUN sed -i 's/listen = \/run\/php\/php[0-9.]*-fpm.sock/listen = 9000/g' /etc/php/[0-9.]*/fpm/pool.d/www.conf
 
 
 RUN ln -s $(ls /usr/sbin/php-fpm*) /usr/sbin/php-fpm
 
-# Copia della configurazione personalizzata (Senza versione hardcoded)
+# Copia della configurazione personalizzata
 COPY conf/www.conf /tmp/www.conf
 RUN mv /tmp/www.conf /etc/php/$(ls /etc/php)/fpm/pool.d/www.conf
+
 # 4. Installazione del WP-CLI (Il tuo coltellino svizzero)
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	&& chmod +x wp-cli.phar \
