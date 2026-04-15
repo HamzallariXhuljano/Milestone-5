@@ -1,18 +1,19 @@
 FROM debian:bookworm
 
+#Install nginx
 RUN apt-get update && apt-get install -y nginx openssl
 
-# Creazione cartella per i certificati
+# Creation of certification
 RUN mkdir -p /etc/nginx/ssl
 
-# Generazione certificato auto-firmato (per il protocollo TLS)
+# Generate certificate auto-signed for TLS
 RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=IT/ST=Florence/L=Florence/O=42/OU=42/CN=xhamzall.42.fr/UID=xhamzall"
 
-#cancella cartella di default (port 80)
+#delete defolt folder
 RUN rm -rf /etc/nginx/sites-enabled/default
 
-# Copia della tua configurazione personalizzata
+# Copy of my configurate folder in default.conf
 COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Lancio di Nginx in primo piano (daemon off)
+# Run nginx
 CMD [ "nginx", "-g", "daemon off;" ]
